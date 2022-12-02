@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>MyQueue</title>
+  </head>
+
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+    <header>
+      <nav>
+        <ul>
+          <li class="Langue">
+            <select>
+              <option value="">Langue</option>
+              <option value="English">English</option>
+              <option value="Français">Français</option>
+            </select>
+          </li>
+          <li class="Update">🔔 New Update 🔔</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="main-content">
+      <p class="title-content">MyQueue</p>
+      <img src="images/test.jpg" id="avatar" class="avatar" />
+      <div class="pseudo">
+        <div class="pseudo-content">
+            <input
+              id="pseudo"
+              class="pseudo-input"
+              type="text"
+              placeholder="Surnom"
+              maxlength="20"
+            />
+          <span class="letter-counter">
+            <span class="count">20</span> /20 letters</span
+          >
+        </div>
+
+        <div class="room-btn">
+          <a href="" class="create-room">CRÉER UNE ROOM</a>
+          <a href="" class="join-room">REJOINDRE UN ROOM</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>MyQueue &copy; - 2022 Tous Drois Réserves</p>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
