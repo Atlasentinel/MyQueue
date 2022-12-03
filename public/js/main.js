@@ -12,3 +12,31 @@ input.addEventListener("input", (event) => {
 });
 
 
+
+var modal = document.querySelector(".Update");
+
+var popup = document.querySelector(".popup");
+
+var close = document.querySelector(".closepup");
+
+modal.addEventListener('click', openModal);
+
+close.addEventListener('click', openModal);
+
+popup.style.display ="none";
+
+function openModal(){
+  
+  if(popup.style.display == "none"){
+  popup.style.display = "block";
+  popup.style.animation = 'fading  0.2s';
+  }else{
+    
+  popup.style.animation = 'fadiout 0.2s';
+  popup.style.display = "none";
+  
+  }
+
+
+  
+}

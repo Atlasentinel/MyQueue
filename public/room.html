@@ -17,7 +17,7 @@
     </script>
     <header>
       <nav>
-        <ul>
+        <ul class="ulangue">
           <li class="Langue">
             <select>
               <option value="">Langue</option>
@@ -25,44 +25,66 @@
               <option value="Français">Français</option>
             </select>
           </li>
-          <li class="Update">🔔 New Update 🔔</li>
+          <li class="Update" onclick="modal('popup')">🔔 New Update 🔔</li>
+          <div class="popup">
+            <div class="popup-container">
+              <h1>Version 1.0</h1>
+              <h3><u>Quoi de neuf : </u></h3>
+              <ul class="brip">
+                <li>J'ai à finir le css</li>
+                <li>Gestion des liens de soundcloud</li>
+                <li>Gestion des liens de spotify</li>
+              </ul>
+            </div>
+            
+            <span class="closepup">Okay</span>
+          </div>
         </ul>
       </nav>
     </header>
     <div class="room-container">
-        
       <div class="user-room">
         <span class="user-text">Participants</span>
-        <ul>
-            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
-            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
-            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
+        <ul class="ulParticipant">
+          <li>
+            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+          </li>
+          <li>
+            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+          </li>
+          <li>
+            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+          </li>
         </ul>
       </div>
 
       <div class="music-queue-container">
         <div class="music-queue-text">
-            <span>Music in Queue</span>
+          <span>Music in Queue</span>
         </div>
         <div class="music-queue">
-            <div class="music">
-                <div class="img"><img src="images/test.jpg"></div>
-                <div class="music-text"><span>Oboy - Avec Toi [2:30]</span></div>
-                <div class="music-delete"><span id="delete">X</span></div>
+          <div class="music">
+            <div class="img"><img src="images/test.jpg" /></div>
+            <div class="music-text"><span>Oboy - Avec Toi [2:30]</span></div>
+            <div class="music-delete"><span id="delete">X</span></div>
+          </div>
+          <div class="music">
+            <div class="img"><img src="images/test2.jpg" /></div>
+            <div class="music-text">
+              <span>Damso - Mosaïque Solitaire [2:30]</span>
             </div>
-            <div class="music">
-                <div class="img"><img src="images/test2.jpg"></div>
-                <div class="music-text"><span>Damso - Mosaïque Solitaire [2:30]</span></div>
-                <div class="music-delete"><span id="delete">X</span></div>
-            </div>
-            <div class="music">
-                <div class="img"><img src="images/test3.jpg"></div>
-                <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
-                <div class="music-delete"><span id="delete">X</span></div>
-            </div>
+            <div class="music-delete"><span id="delete">X</span></div>
+          </div>
+          <div class="music">
+            <div class="img"><img src="images/test3.jpg" /></div>
+            <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
+            <div class="music-delete"><span id="delete">X</span></div>
+          </div>
         </div>
         <div class="music-queue-input">
-            <input type="text" placeholder="Mettre un url">
+          <form>
+            <input type="text" placeholder="Mettre un url..." />
+          </form>
         </div>
       </div>
     </div>

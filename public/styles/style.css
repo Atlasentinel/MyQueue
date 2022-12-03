@@ -25,13 +25,14 @@
 * {
   margin: 0;
   padding: 0;
-  list-style: none;
   outline: none;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  
+  list-style: none;
 }
 
 header {
@@ -44,7 +45,7 @@ header nav {
   padding: 10px;
 }
 
-nav ul {
+nav ul.ulangue {
   display: flex;
   flex-direction: row;
 }
@@ -257,7 +258,8 @@ width: fit-content;
     right: 6%;
     position: absolute;
     border: 3px solid white;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     padding: 30px;
     width:25%;
     height: 60%;
@@ -265,7 +267,7 @@ width: fit-content;
 
 .music-queue-text{
     font-size: 50px;
-    font-family: Roboto-Black;
+    font-family:  Poppins-Black;
     display: flex;
     justify-content: center;
     text-decoration: underline;
@@ -324,4 +326,92 @@ width: fit-content;
 
     color:  red;
 
+}
+
+.music-queue-input{
+  position: absolute;
+  bottom: -41px;
+  width: 94%;
+  left: -3px;
+  height: 40px;
+}
+
+.music-queue-input input{
+  width: 100%;
+  height: 100%;
+  border: 3px solid white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  font-size: 20px;
+  font-family: Poppins-Black;
+  background-color: transparent;
+  padding: 20px;
+  color: var(--green-color);
+}
+
+.popup{
+  position: absolute;
+  display: block;
+  right: 40%;
+  top: 10%;
+  border: 2px solid white;
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: Poppins-Black;
+  width: 700px;
+  height: 900px;
+  font-size: 20px;
+  border-radius: 20px;
+  z-index: 5;
+}
+
+.popup-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+span.closepup{
+  position: absolute;
+  bottom: 1px;
+  left: 45%;
+  color: var(--light-green-color) ;
+  cursor: pointer;
+}
+
+span.closepup:hover{
+  color: var(--green-color);
+}
+
+.ulParticipant{
+  list-style-type: none;
+}
+
+ul.brip{
+  margin-top: 10px;
+  list-style: inside !important;
+}
+
+ul.brip li{
+  font-family: Roboto;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+ul.brip li:first-child{
+  font-weight: bold;
+
+}
+
+
+
+@keyframes fading {
+  0% { transform : scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadout{
+  0% { transform : scale(1); }
+  100% { transform: scale(0); }
 }

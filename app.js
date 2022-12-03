@@ -17,22 +17,8 @@ app.get("/room", (req,res) =>{
 });
 
 
-io.on('connection',(socket) =>{
-
-
-
-    socket.on('join_room', room =>{
-        socket.join(room);
-    });
-
-    socket.on("pseudo", data =>{
-        var pseudo = document.getElementById("psedo");
-        if(pseudo.value == null){
-            message.push("Vous devez entrer un pseudo");
-        }
-            
-    });
-
+io.on('disconnect', function(){
+    console.log("User have bee, disconnected from server");
 });
 
 app.listen(port, () =>{
