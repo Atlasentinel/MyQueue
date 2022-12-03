@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>MyQueue</title>
+  </head>
+
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+    <header>
+      <nav>
+        <ul>
+          <li class="Langue">
+            <select>
+              <option value="">Langue</option>
+              <option value="English">English</option>
+              <option value="Français">Français</option>
+            </select>
+          </li>
+          <li class="Update">🔔 New Update 🔔</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="room-container">
+        
+      <div class="user-room">
+        <span class="user-text">Participants</span>
+        <ul>
+            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
+            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
+            <li><img src="images/test.jpg" style="width: 50%;border-radius:50%;"></li>
+        </ul>
+      </div>
+
+      <div class="music-queue-container">
+        <div class="music-queue-text">
+            <span>Music in Queue</span>
+        </div>
+        <div class="music-queue">
+            <div class="music">
+                <div class="img"><img src="images/test.jpg"></div>
+                <div class="music-text"><span>Oboy - Avec Toi [2:30]</span></div>
+                <div class="music-delete"><span id="delete">X</span></div>
+            </div>
+            <div class="music">
+                <div class="img"><img src="images/test2.jpg"></div>
+                <div class="music-text"><span>Damso - Mosaïque Solitaire [2:30]</span></div>
+                <div class="music-delete"><span id="delete">X</span></div>
+            </div>
+            <div class="music">
+                <div class="img"><img src="images/test3.jpg"></div>
+                <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
+                <div class="music-delete"><span id="delete">X</span></div>
+            </div>
+        </div>
+        <div class="music-queue-input">
+            <input type="text" placeholder="Mettre un url">
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>MyQueue &copy; - 2022 Tous Drois Réserves</p>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -12,6 +12,11 @@ app.get("/", (req,res) =>{
     res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/room", (req,res) =>{
+    res.sendFile(__dirname + "/public/room.html");
+});
+
+
 io.on('connection',(socket) =>{
 
 
