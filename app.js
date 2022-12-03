@@ -26,7 +26,7 @@ io.on('connection',(socket) =>{
     });
 
     socket.on("pseudo", data =>{
-        var pseudo = document.getElementById("pseudo");
+        var pseudo = document.getElementById("psedo");
         if(pseudo.value == null){
             message.push("Vous devez entrer un pseudo");
         }
