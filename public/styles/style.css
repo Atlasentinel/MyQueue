@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
   font-family: Roboto-Black;
   src: url(../styles/fonts/Roboto-Black.ttf);
 }
@@ -28,6 +28,10 @@
   outline: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -48,7 +52,60 @@ header nav {
 nav ul.ulangue {
   display: flex;
   flex-direction: row;
+  list-style: none;
 }
+
+.ul-music{
+  list-style: none;
+}
+
+.ul-music li:first-child .img{
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ul-music li:first-child .music-text{
+  animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+    opacity: .1;
+  }
+
+  50%{
+    opacity: .9;
+  }
+
+  100% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+}
+
+.exit{
+    position: absolute;
+    top: 1.5%;
+    left: 70px;
+   
+}
+
+a .exit , span.exit-text{
+  color: var(--text-color);
+  font-family: Poppins-Black;
+  font-size: 150%;
+}
+
 
 nav ul li.Update {
   display: block;
@@ -197,7 +254,7 @@ p.title-content:hover {
   width: 100%;
   text-align: center;
   bottom: 0;
-  position: absolute;
+  position: fixed;
   font-family: Roboto-Black;
 }
 
@@ -266,12 +323,18 @@ width: fit-content;
 }
 
 .music-queue-text{
+    margin-bottom: 10%;
     font-size: 50px;
     font-family:  Poppins-Black;
     display: flex;
     justify-content: center;
     text-decoration: underline;
     text-align: center;
+}
+
+.music-queue{
+  width: 110%;
+  cursor: pointer;
 }
 
 .music-queue .music{
@@ -298,7 +361,10 @@ width: fit-content;
     width: 3em;
 }
 
-
+.music-queue .music-text{
+  position: absolute;
+    left: 25%;
+}
 
 .music-queue .music .music-text span{
     font-size: 24px;
@@ -307,19 +373,19 @@ width: fit-content;
 }
 
 .music-queue .music .music-text span:hover{
-    color:  var(--light-green-color);
+    color:  var(--btn-update);
 }
 
 .music-queue .music .music-delete {
-    font-family: Roboto;
-    font-size: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    right: 30px;
-    position: absolute;
-    cursor: pointer;
+  font-family: Roboto;
+  font-size: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  right: -3px;
+  position: absolute;
+  cursor: pointer;
 }
 
 .music-queue .music .music-delete:hover {
@@ -351,15 +417,14 @@ width: fit-content;
 
 .popup{
   position: absolute;
-  display: block;
   right: 40%;
   top: 10%;
   border: 2px solid white;
   background-color: transparent;
   color: var(--text-color);
   font-family: Poppins-Black;
-  width: 700px;
-  height: 900px;
+  width: 30%;
+  height: 70%;
   font-size: 20px;
   border-radius: 20px;
   z-index: 5;
