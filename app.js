@@ -17,9 +17,16 @@ app.get("/room", (req,res) =>{
 });
 
 
-io.on('disconnect', function(){
-    console.log("User have bee, disconnected from server");
-});
+
+app.on('connection', function(socket){
+    console.log("Un utilisateur est connecté");
+    socket.on('disconnect', function(){
+        console.log("Un utilisateur s'est deconnecte");
+    })
+    socket.on('pseudo', function(pseudo){
+        console.log("pseudo recu" + pseudo);
+    })
+})
 
 app.listen(port, () =>{
     console.log(`Le serveur écoute sur le port : ${port}`);

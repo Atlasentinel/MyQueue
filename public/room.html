@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js" integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
@@ -36,17 +37,11 @@
                 <li>Gestion des liens de spotify</li>
               </ul>
             </div>
-            
+
             <span class="closepup">Okay</span>
           </div>
         </ul>
-        <a href="./" title="Exit">
-          <span class="exit"> 
-              <i class='bx bx-exit'></i>
-           
-            <span class="exit-text">Quitter le salon</span>
-          </span>
-        </a> 
+       
       </nav>
     </header>
     <div class="room-container">
@@ -65,37 +60,63 @@
         </ul>
       </div>
 
+
+      
+
       <div class="music-queue-container">
         <div class="music-queue-text">
           <span>Music in Queue</span>
         </div>
         <div class="music-queue">
           <ul class="ul-music">
-            <li>
+            <li class="li-music">
               <div class="music">
-              <div class="img"><img src="images/test.jpg" /></div>
-              <div class="music-text"><span>Oboy - Avec Toi [2:30]</span></div>
-              <div class="music-delete"><span id="delete"><i class='bx bx-x bx-rotate-180' ></i></span></div>
-            </div>
-          </li>
-          <li>
-            <div class="music">
-              <div class="img"><img src="images/test2.jpg" /></div>
-              <div class="music-text">
-                <span>Damso - Mosaïque Solitaire [2:30]</span>
+                <div class="img"><img src="images/test.jpg" /></div>
+                <div class="music-text">
+                  <span>Oboy - Avec Toi [2:30]</span>
+                </div>
+                <div class="music-delete">
+                  <span id="delete"
+                    ><i class="bx bx-x bx-rotate-180"></i
+                  ></span>
+                </div>
               </div>
-              <div class="music-delete"><span id="delete"><i class='bx bx-x bx-rotate-180' ></i></span></div>
-            </div>
-          </li>
-          <li>
-            <div class="music">
-              <div class="img"><img src="images/test3.jpg" /></div>
-              <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
-              <div class="music-delete"><span id="delete"><i class='bx bx-x bx-rotate-180' ></i></span></div>
-            </div>
-          </li>
+            </li>
+            <li class="li-music">
+              <div class="music">
+                <div class="img"><img src="images/test2.jpg" /></div>
+                <div class="music-text">
+                  <span>Damso - Mosaïque Solitaire [2:30]</span>
+                </div>
+                <div class="music-delete">
+                  <span id="delete"
+                    ><i class="bx bx-x bx-rotate-180" ></i
+                  ></span>
+                </div>
+              </div>
+            </li>
+            <li class="li-music">
+              <div class="music">
+                <div class="img"><img src="images/test3.jpg" /></div>
+                <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
+                <div class="music-delete">
+                  <span id="delete"
+                    ><i class="bx bx-x bx-rotate-180"></i
+                  ></span>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-      </ul>
+
+        <!--<a href="./" title="Exit">
+          <span class="exit">
+            <i class="bx bx-exit"></i>
+
+            <span class="exit-text">Quitter le salon</span>
+          </span>
+        </a>-->
+
         <div class="music-queue-input">
           <form>
             <input type="text" placeholder="Mettre un url..." />
@@ -103,8 +124,11 @@
         </div>
       </div>
     </div>
+
+    
+
     <div class="footer">
-      <p>MyQueue &copy; - 2022 Tous Drois Réserves</p>
+      <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
     </div>
 
     <script src="js/main.js"></script>

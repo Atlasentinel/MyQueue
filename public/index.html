@@ -11,9 +11,21 @@
   </head>
 
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js" integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+
+      var send = function(){
+        var pseudo = document.getElementById('pseudo').value;
+        socket.emit('pseudo', pseudo);
+        const idKey = Math.random().toString(4).substr(4, 4);
+        if(pseudo == '') pseudo = "Guest";
+        
+        window.location.href = "room.html?room=" +  idKey + pseudo +"&pseudo=" + pseudo ;
+      }
+
+
     </script>
     <header>
       <nav>
@@ -34,7 +46,7 @@
       <img src="images/test.jpg" id="avatar" class="avatar" />
       <div class="pseudo">
         <div class="pseudo-content">
-          <form style="height: 40px">
+          <form style="height: 40px" >
             <input
               id="pseudo"
               class="pseudo-input"
@@ -49,13 +61,13 @@
         </div>
 
         <div class="room-btn">
-          <a href="" class="create-room">CRÉER UNE ROOM</a>
-          <a href="" class="join-room">REJOINDRE UN ROOM</a>
+          <span id="create-room" class="create-room" onclick="send()" >CRÉER UNE ROOM</span>
+          <span  href="" class="join-room" >REJOINDRE UN ROOM</span>
         </div>
       </div>
     </div>
     <div class="footer">
-      <p>MyQueue &copy; - 2022 Tous Drois Réserves</p>
+      <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
     </div>
 
     <script src="js/main.js"></script>

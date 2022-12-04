@@ -100,11 +100,21 @@ nav ul.ulangue {
    
 }
 
+a.exit{
+  background-color: var(--btn-color);
+  color: var(--text-color);
+  border-radius: 20px;
+  border: 2px solid lightgray;
+  padding: 10px;
+}
+
 a .exit , span.exit-text{
   color: var(--text-color);
   font-family: Poppins-Black;
   font-size: 150%;
 }
+
+
 
 
 nav ul li.Update {
@@ -217,13 +227,14 @@ p.title-content:hover {
   margin-top: 5%;
 }
 
-.room-btn a {
+.room-btn span {
   text-decoration: none;
   font-family: Roboto-Black;
   border-radius: 15px;
   padding: 15px;
   width: 20%;
   background-color: var(--btn-color);
+  cursor: pointer;
 }
 
 .create-room {
