@@ -15,12 +15,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-      socket.on('pseudo', function (pseudo) {
-        console.log("pseudo recu 2: " + pseudo);
-    })
-      socket.on('create-room', function(roomName){
-        console.log(roomName);
-      }); 
     </script>
     <header>
       <nav>
@@ -75,6 +69,19 @@
         </div>
         <div class="music-queue">
           <ul class="ul-music">
+            <li class="li-music">
+              <div class="music">
+                <div class="img"><img src="images/test3.jpg" /></div>
+                <div class="music-text">
+                  <span>Oboy - Avec Toi [2:30]</span>
+                </div>
+                <div class="music-delete">
+                  <span id="delete"
+                    ><i class="bx bx-x bx-rotate-180"></i
+                  ></span>
+                </div>
+              </div>
+            </li>
             <li class="li-music">
               <div class="music">
                 <div class="img"><img src="images/test.jpg" /></div>
