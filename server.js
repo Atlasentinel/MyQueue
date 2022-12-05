@@ -6,16 +6,16 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./user');
+const port = 3000;
 
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req,res) =>{
+app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/");
 });
 
-app.get("/room", (req,res) =>{
+app.get("/room", (req, res) => {
     res.sendFile(__dirname + "/public/room.html");
 });
 
@@ -24,51 +24,32 @@ app.get("/room", (req,res) =>{
 
 
 
-io.on('connection', function(socket){
-    
-    
- 
+io.on('connection', function (socket) {
+
+
     /* Reception du pseudo */
-    socket.on('pseudo', function(pseudo){
-        console.log("pseudo recu " + pseudo);
-        socket.broadcast.emit('con', pseudo + ' est connecté sur la room');
+    socket.on('pseudo', function (pseudo) {
+        console.log("pseudo recu : " + pseudo);
     })
 
-    socket.on('joinRoom',({pseudo, room}) => {
-        const user = userJoin(socket.id, pseudo, room);
+    socket.on('create-room', function (idKey,pseudo) {
+        roomName = idKey+pseudo;
+        console.log(roomName);
+        socket.join(roomName);
+        socket.to(roomName).emit(`${pseudo} à rejoins la room ${roomName}`);
 
-        socket.join(user.room);
-        
-        socket.broadcast.to(user.room).emit('connexion',(pseudo + "a rejoins la room"));
-        console.log(pseudo + "a rejoins la room");
+      });
+
+
+    socket.on('disconnect', function () {
+        console.log(`Un utilisateur vient de se deconnecter`);
     });
 
-    socket.on('message', msg =>{
-        const user = getCurrentUser(socket.id);
-
-        io.to(user.room).emit('message', msg);
-    });
-
-
-    socket.on('disconnect', function(){
-        const user = userLeave(socket.id);
-
-        if(user){  
-            io.to(user.room).emit('message', `${user.pseudo} has left the room`);
-        }
-
-    });
-    
 
 });
 
-/*const { pseudo, room} = Qs.parse(localtion.search, {
-    ignoreQueryPrefix: true
-  })
-  console.log(pseudo, room);
-  socket.emit('joinRoom', {pseudo, room});*/
 
-
-http.listen(3000, function(){
-    console.log("Server lancer sur le port 3000");
+http.listen(port, function () {
+    console.log(`Server lancer sur le port ${port}`);
 })
+

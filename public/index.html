@@ -1,75 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles/style.css" />
-    <title>MyQueue</title>
-  </head>
 
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js" integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
+<head>
+  <meta charset="utf-8" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/style.css" />
+  <title>MyQueue</title>
+</head>
 
-      var send = function(){
-        var pseudo = document.getElementById('pseudo').value;
-        socket.emit('pseudo', pseudo);
-        const idKey = Math.random().toString(4).substr(4, 4);
-        if(pseudo == '') pseudo = "Guest";
-        
-        window.location.href = "room.html?room=" +  idKey + pseudo +"&pseudo=" + pseudo ;
-      }
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
+    integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    var send = function () {
+      var pseudo = document.getElementById('pseudo').value;
+      socket.emit('pseudo', pseudo);
+      // Génère une clé unique 
+      var idKey = Math.random().toString(10).substr(5, 5);
+      console.log(idKey);
+        if (pseudo == '') pseudo = "Guest";
+        window.location.href = "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
+        socket.emit('create-room',idKey,pseudo);
+        }
+ 
 
 
-    </script>
-    <header>
-      <nav>
-        <ul class="ulangue">
-          <li class="Langue">
-            <select>
-              <option value="">Langue</option>
-              <option value="English">English</option>
-              <option value="Français">Français</option>
-            </select>
-          </li>
-          <li class="Update">🔔 New Update 🔔</li>
-        </ul>
-      </nav>
-    </header>
-    <div class="main-content">
-      <p class="title-content">MyQueue</p>
-      <img src="images/test.jpg" id="avatar" class="avatar" />
-      <div class="pseudo">
-        <div class="pseudo-content">
-          <form style="height: 40px" >
-            <input
-              id="pseudo"
-              class="pseudo-input"
-              type="text"
-              placeholder="Surnom"
-              maxlength="20"
-            />
-          </form>
-          <span class="letter-counter">
-            <span class="count">20</span> letters</span
-          >
-        </div>
 
-        <div class="room-btn">
-          <span id="create-room" class="create-room" onclick="send()" >CRÉER UNE ROOM</span>
-          <span  href="" class="join-room" >REJOINDRE UN ROOM</span>
-        </div>
+  </script>
+  <header>
+    <nav>
+      <ul class="ulangue">
+        <li class="Langue">
+          <select>
+            <option value="">Langue</option>
+            <option value="English">English</option>
+            <option value="Français">Français</option>
+          </select>
+        </li>
+        <li class="Update">🔔 New Update 🔔</li>
+      </ul>
+    </nav>
+  </header>
+  <div class="main-content">
+    <p class="title-content">MyQueue</p>
+    <img src="images/test.jpg" id="avatar" class="avatar" />
+    <div class="pseudo">
+      <div class="pseudo-content">
+        <form style="height: 40px" action="javascript:send()">
+          <input id="pseudo" class="pseudo-input" type="text" placeholder="Surnom" maxlength="20" />
+        </form>
+        <span class="letter-counter">
+          <span class="count">20</span> letters</span>
+      </div>
+
+      <div class="room-btn">
+        <span id="create-room" class="create-room" onclick="send()">CRÉER UNE ROOM</span>
+        <span href="" class="join-room">REJOINDRE UN ROOM</span>
       </div>
     </div>
-    <div class="footer">
-      <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
-    </div>
+  </div>
+  <div class="footer">
+    <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
+  </div>
 
-    <script src="js/main.js"></script>
-  </body>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

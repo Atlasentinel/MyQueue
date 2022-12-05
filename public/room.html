@@ -15,6 +15,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+      socket.on('pseudo', function (pseudo) {
+        console.log("pseudo recu 2: " + pseudo);
+    })
+      socket.on('create-room', function(roomName){
+        console.log(roomName);
+      }); 
     </script>
     <header>
       <nav>
