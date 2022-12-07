@@ -22,10 +22,12 @@
       // Génère une clé unique 
       var idKey = Math.random().toString(10).substr(5, 5);
       console.log(idKey);
-        if (pseudo == '') pseudo = "Guest";
+      if (pseudo == '') pseudo = "Guest";
+        socket.emit('create-room',{id: idKey,name: pseudo});
         window.location.href = "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
-        socket.emit('create-room',idKey,pseudo);
-        }
+      }
+
+        
  
 
 

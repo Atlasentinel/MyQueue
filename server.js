@@ -22,9 +22,10 @@ app.get("/room", (req, res) => {
 
 
 
-
+let users = [];
 
 io.on('connection', function (socket) {
+
 
 
     /* Reception du pseudo */
@@ -32,13 +33,9 @@ io.on('connection', function (socket) {
         console.log("pseudo recu : " + pseudo);
     })
 
-    socket.on('create-room', function (idKey,pseudo) {
-        roomName = idKey+pseudo;
-        console.log(roomName);
-        socket.join(roomName);
-        socket.to(roomName).emit(`${pseudo} à rejoins la room ${roomName}`);
+   
+  
 
-      });
 
 
     socket.on('disconnect', function () {

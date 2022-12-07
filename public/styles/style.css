@@ -335,12 +335,16 @@ width: fit-content;
 
 .music-queue-text{
     margin-bottom: 10%;
-    font-size: 50px;
-    font-family:  Poppins-Black;
     display: flex;
     justify-content: center;
     text-decoration: underline;
     text-align: center;
+}
+
+.music-queue-text span{
+  font-size: 120%;
+  
+  font-family:  Poppins-Black;
 }
 
 .music-queue{
@@ -378,7 +382,7 @@ width: fit-content;
 }
 
 .music-queue .music .music-text span{
-    font-size: 24px;
+    font-size: 100%;
     font-family: Roboto-Black;
     cursor: pointer;
 }

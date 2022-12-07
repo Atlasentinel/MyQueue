@@ -2,10 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="/styles/style.css" />
     <title>MyQueue</title>
   </head>
@@ -15,6 +11,17 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+       /* Création de la room */
+       let rooms = [];
+      socket.on("create-room", ({id,name}) => {
+        console.log("test");
+        roomName = id+name;
+        rooms.push(roomName);
+        console.log(rooms);
+        console.log("Nom de la room: "+ roomName);
+        socket.join(roomName);
+        socket.emit("Salut",roomName);
+    });
     </script>
     <header>
       <nav>
@@ -69,19 +76,6 @@
         </div>
         <div class="music-queue">
           <ul class="ul-music">
-            <li class="li-music">
-              <div class="music">
-                <div class="img"><img src="images/test3.jpg" /></div>
-                <div class="music-text">
-                  <span>Oboy - Avec Toi [2:30]</span>
-                </div>
-                <div class="music-delete">
-                  <span id="delete"
-                    ><i class="bx bx-x bx-rotate-180"></i
-                  ></span>
-                </div>
-              </div>
-            </li>
             <li class="li-music">
               <div class="music">
                 <div class="img"><img src="images/test.jpg" /></div>
