@@ -24,8 +24,13 @@ app.get("/room", (req, res) => {
 
 let users = [];
 
-io.on('connection', function (socket) {
+io.on('connection',  socket => {
 
+
+    
+        socket.join("room1");
+        socket.to("room1").emit("azeazeazeazeaz");
+        
 
 
     /* Reception du pseudo */
@@ -34,7 +39,24 @@ io.on('connection', function (socket) {
     })
 
    
-  
+    /* Création de la room 
+    let rooms = [];
+    socket.on("create-room", ({ id, name }) => {
+      console.log("test");
+      roomName = id + name;
+      for (room in rooms) {
+        if (roomName !== rooms[room]) {
+          rooms.push(roomName);
+          console.log(rooms);
+        } else {
+          console.log("deja dans la room");
+        }
+      }
+      console.log("Nom de la room: " + roomName);
+      socket.join(roomName);
+      socket.emit("create-room  ", roomName);
+    });*/
+
 
 
 

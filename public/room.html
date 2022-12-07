@@ -2,26 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/style.css" />
     <title>MyQueue</title>
   </head>
 
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js" integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
+      integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-       /* Création de la room */
-       let rooms = [];
-      socket.on("create-room", ({id,name}) => {
-        console.log("test");
-        roomName = id+name;
-        rooms.push(roomName);
-        console.log(rooms);
-        console.log("Nom de la room: "+ roomName);
-        socket.join(roomName);
-        socket.emit("Salut",roomName);
-    });
+
     </script>
     <header>
       <nav>
@@ -48,7 +47,6 @@
             <span class="closepup">Okay</span>
           </div>
         </ul>
-       
       </nav>
     </header>
     <div class="room-container">
@@ -67,9 +65,6 @@
         </ul>
       </div>
 
-
-      
-
       <div class="music-queue-container">
         <div class="music-queue-text">
           <span>Music in Queue</span>
@@ -83,9 +78,7 @@
                   <span>Oboy - Avec Toi [2:30]</span>
                 </div>
                 <div class="music-delete">
-                  <span id="delete"
-                    ><i class="bx bx-x bx-rotate-180"></i
-                  ></span>
+                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
                 </div>
               </div>
             </li>
@@ -96,9 +89,7 @@
                   <span>Damso - Mosaïque Solitaire [2:30]</span>
                 </div>
                 <div class="music-delete">
-                  <span id="delete"
-                    ><i class="bx bx-x bx-rotate-180" ></i
-                  ></span>
+                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
                 </div>
               </div>
             </li>
@@ -107,9 +98,7 @@
                 <div class="img"><img src="images/test3.jpg" /></div>
                 <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
                 <div class="music-delete">
-                  <span id="delete"
-                    ><i class="bx bx-x bx-rotate-180"></i
-                  ></span>
+                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
                 </div>
               </div>
             </li>
@@ -131,8 +120,6 @@
         </div>
       </div>
     </div>
-
-    
 
     <div class="footer">
       <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>

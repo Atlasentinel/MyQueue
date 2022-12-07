@@ -16,17 +16,29 @@
   <script>
     var socket = io();
 
-    var send = function () {
+    
+    const idKey = Math.random().toString(10).substr(5, 5);
+
+    function getPseudo(){
       var pseudo = document.getElementById('pseudo').value;
-      socket.emit('pseudo', pseudo);
-      // Génère une clé unique 
-      var idKey = Math.random().toString(10).substr(5, 5);
-      console.log(idKey);
       if (pseudo == '') pseudo = "Guest";
+      socket.emit('pseudo', pseudo);
+      console.log(idKey);
+    }
+
+    var send = function () {
+      getPseudo();
+      // Génère une clé unique 
         socket.emit('create-room',{id: idKey,name: pseudo});
         window.location.href = "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
       }
 
+      var join_room = function() {
+        getPseudo();
+        socket.emit('join-room',{id: idKey,name: pseudo});
+        window.location.href = "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
+      }
+      
         
  
 
@@ -44,6 +56,19 @@
           </select>
         </li>
         <li class="Update">🔔 New Update 🔔</li>
+        <div class="popup">
+          <div class="popup-container">
+            <h1>Version 1.0</h1>
+            <h3><u>Quoi de neuf : </u></h3>
+            <ul class="brip">
+              <li>J'ai à finir le css</li>
+              <li>Gestion des liens de soundcloud</li>
+              <li>Gestion des liens de spotify</li>
+            </ul>
+          </div>
+
+          <span class="closepup">Okay</span>
+        </div>
       </ul>
     </nav>
   </header>
@@ -61,7 +86,8 @@
 
       <div class="room-btn">
         <span id="create-room" class="create-room" onclick="send()">CRÉER UNE ROOM</span>
-        <span href="" class="join-room">REJOINDRE UN ROOM</span>
+        <span onclick="join_room()" class="">REJOINDRE LA ROOM</span>
+        <span  class="join-room">REJOINDRE UN ROOM</span>
       </div>
     </div>
   </div>
