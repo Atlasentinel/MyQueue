@@ -1,111 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles/style.css" />
-    <title>MyQueue</title>
-  </head>
 
-  <body>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
-      integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
+<head>
+  <meta charset="utf-8" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/style.css" />
+  <title>MyQueue</title>
+</head>
 
-    </script>
-    <header>
-      <nav>
-        <ul class="ulangue">
-          <li class="Langue">
-            <select>
-              <option value="">Langue</option>
-              <option value="English">English</option>
-              <option value="Français">Français</option>
-            </select>
-          </li>
-          <li class="Update" onclick="modal('popup')">🔔 New Update 🔔</li>
-          <div class="popup">
-            <div class="popup-container">
-              <h1>Version 1.0</h1>
-              <h3><u>Quoi de neuf : </u></h3>
-              <ul class="brip">
-                <li>J'ai à finir le css</li>
-                <li>Gestion des liens de soundcloud</li>
-                <li>Gestion des liens de spotify</li>
-              </ul>
-            </div>
-
-            <span class="closepup">Okay</span>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
+    integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  <header>
+    <nav>
+      <ul class="ulangue">
+        <li class="Langue">
+          <select>
+            <option value="">Langue</option>
+            <option value="English">English</option>
+            <option value="Français">Français</option>
+          </select>
+        </li>
+        <li class="Update" onclick="modal('popup')">🔔 New Update 🔔</li>
+        <div class="popup">
+          <div class="popup-container">
+            <h1>Version 1.0</h1>
+            <h3><u>Quoi de neuf : </u></h3>
+            <ul class="brip">
+              <li>J'ai à finir le css</li>
+              <li>Gestion des liens de soundcloud</li>
+              <li>Gestion des liens de spotify</li>
+            </ul>
           </div>
-        </ul>
-      </nav>
-    </header>
-    <div class="room-container">
-      <div class="user-room">
-        <span class="user-text">Participants</span>
-        <ul class="ulParticipant">
-          <li>
-            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+
+          <span class="closepup">Okay</span>
+        </div>
+      </ul>
+    </nav>
+  </header>
+  <div class="room-container">
+    <div class="user-room">
+      <span class="user-text">Participants</span>
+      <ul class="ulParticipant">
+        <li>
+          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+        </li>
+        <li>
+          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+        </li>
+        <li>
+          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="music-queue-container">
+      <div class="music-queue-text">
+        <span>Music in Queue</span>
+      </div>
+      <div class="music-queue">
+        <ul class="ul-music">
+          <li class="li-music">
+            <div class="music">
+              <div class="img"><img src="images/test.jpg" /></div>
+              <div class="music-text">
+                <span>Oboy - Avec Toi [2:30]</span>
+              </div>
+              <div class="music-delete">
+                <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
+              </div>
+            </div>
           </li>
-          <li>
-            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+          <li class="li-music">
+            <div class="music">
+              <div class="img"><img src="images/test2.jpg" /></div>
+              <div class="music-text">
+                <span>Damso - Mosaïque Solitaire [2:30]</span>
+              </div>
+              <div class="music-delete">
+                <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
+              </div>
+            </div>
           </li>
-          <li>
-            <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
+          <li class="li-music">
+            <div class="music">
+              <div class="img"><img src="images/test3.jpg" /></div>
+              <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
+              <div class="music-delete">
+                <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
 
-      <div class="music-queue-container">
-        <div class="music-queue-text">
-          <span>Music in Queue</span>
-        </div>
-        <div class="music-queue">
-          <ul class="ul-music">
-            <li class="li-music">
-              <div class="music">
-                <div class="img"><img src="images/test.jpg" /></div>
-                <div class="music-text">
-                  <span>Oboy - Avec Toi [2:30]</span>
-                </div>
-                <div class="music-delete">
-                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
-                </div>
-              </div>
-            </li>
-            <li class="li-music">
-              <div class="music">
-                <div class="img"><img src="images/test2.jpg" /></div>
-                <div class="music-text">
-                  <span>Damso - Mosaïque Solitaire [2:30]</span>
-                </div>
-                <div class="music-delete">
-                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
-                </div>
-              </div>
-            </li>
-            <li class="li-music">
-              <div class="music">
-                <div class="img"><img src="images/test3.jpg" /></div>
-                <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
-                <div class="music-delete">
-                  <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!--<a href="./" title="Exit">
+      <!--<a href="./" title="Exit">
           <span class="exit">
             <i class="bx bx-exit"></i>
 
@@ -113,18 +107,19 @@
           </span>
         </a>-->
 
-        <div class="music-queue-input">
-          <form>
-            <input type="text" placeholder="Mettre un url..." />
-          </form>
-        </div>
+      <div class="music-queue-input">
+        <form>
+          <input type="text" placeholder="Mettre un url..." />
+        </form>
       </div>
     </div>
+  </div>  
 
-    <div class="footer">
-      <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
-    </div>
+  <div class="footer">
+    <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
+  </div>
 
-    <script src="js/main.js"></script>
-  </body>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

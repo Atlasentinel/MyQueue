@@ -26,11 +26,11 @@ let users = [];
 
 io.on('connection',  socket => {
 
-
-    
-        socket.join("room1");
-        socket.to("room1").emit("azeazeazeazeaz");
-        
+  socket.join("room1");
+  socket.to("room1").emit("azeazeazeazeaz");
+  app.get("/room", function(req, res){
+    res.render(__dirname+ "/room.html",{"termdata": terms});
+});
 
 
     /* Reception du pseudo */
