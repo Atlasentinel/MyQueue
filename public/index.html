@@ -14,33 +14,11 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script>
-
-    var socket = io();
-
-
-    const idKey = Math.random().toString(10).substr(5, 5);
-
-
-    var send = function () {
-      var pseudo = document.getElementById('pseudo').value;
-      if (pseudo == '') pseudo = "Guest";
-      socket.emit('pseudo', pseudo);
-      console.log(idKey);
-      // Génère une clé unique 
-      socket.emit('create-room', { id: idKey, name: pseudo });
-      window.location.href = "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
-    }
-
-    var join_room = function () {
-      var pseudo = document.getElementById('pseudo').value;
-      if (pseudo == '') pseudo = "Guest";
-      socket.emit('pseudo', pseudo);
-      console.log(idKey);
-      socket.emit('join-room', { id: idKey, name: pseudo });
-  
-    }
-
-
+    const socket = io("localhost:3000")
+    let count = 0;
+setInterval(() => {
+  socket.volatile.emit("ping", ++count);
+}, 1000);
   </script>
   <header>
     <nav>
@@ -82,9 +60,8 @@
       </div>
 
       <div class="room-btn">
-         <!--<span id="create-room" class="create-room" onclick="send()">CRÉER UNE ROOM</span>
-        <span onclick="join_room()" class="">REJOINDRE LA ROOM</span>-->
-        <span class="join-room">REJOINDRE UN ROOM</span>
+        <!--<span id="create-room" class="create-room" onclick="">CRÉER UNE ROOM</span>-->
+        <span class="join-room" onclick="send()">REJOINDRE UN ROOM</span>
       </div>
     </div>
   </div>

@@ -19,53 +19,14 @@ app.get("/room", (req, res) => {
     res.sendFile(__dirname + "/public/room.html");
 });
 
+// server-side
+io.on("connection", (socket) => {
+    console.log("connect");
 
-
-
-let users = [];
-
-io.on('connection',  socket => {
-
-  socket.join("room1");
-  socket.to("room1").emit("azeazeazeazeaz");
-  app.get("/room", function(req, res){
-    res.render(__dirname+ "/room.html",{"termdata": terms});
-});
-
-
-    /* Reception du pseudo */
-    socket.on('pseudo', function (pseudo) {
-        console.log("pseudo recu : " + pseudo);
-    })
-
-   
-    /* Création de la room 
-    let rooms = [];
-    socket.on("create-room", ({ id, name }) => {
-      console.log("test");
-      roomName = id + name;
-      for (room in rooms) {
-        if (roomName !== rooms[room]) {
-          rooms.push(roomName);
-          console.log(rooms);
-        } else {
-          console.log("deja dans la room");
-        }
-      }
-      console.log("Nom de la room: " + roomName);
-      socket.join(roomName);
-      socket.emit("create-room  ", roomName);
-    });*/
-
-
-
-
-    socket.on('disconnect', function () {
-        console.log(`Un utilisateur vient de se deconnecter`);
+    socket.on("ping", (count) => {
+      console.log(count);
     });
-
-
-});
+  });
 
 
 http.listen(port, function () {
