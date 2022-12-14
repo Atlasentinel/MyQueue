@@ -1,75 +1,100 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <title>MyQueue</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/style.css" />
-  <title>MyQueue</title>
-</head>
+  <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
+      integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io("localhost:3000");
 
-<body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"
-    integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io("localhost:3000")
-    let count = 0;
-setInterval(() => {
-  socket.volatile.emit("ping", ++count);
-}, 1000);
-  </script>
-  <header>
-    <nav>
-      <ul class="ulangue">
-        <li class="Langue">
-          <select>
-            <option value="">Langue</option>
-            <option value="English">English</option>
-            <option value="Français">Français</option>
-          </select>
-        </li>
-        <li class="Update">🔔 New Update 🔔</li>
-        <div class="popup">
-          <div class="popup-container">
-            <h1>Version 1.0</h1>
-            <h3><u>Quoi de neuf : </u></h3>
-            <ul class="brip">
-              <li>J'ai à finir le css</li>
-              <li>Gestion des liens de soundcloud</li>
-              <li>Gestion des liens de spotify</li>
-            </ul>
+      const idKey = Math.random().toString(10).substr(5, 5);
+
+      function send() {
+      let pseudo = document.getElementById('pseudo').value;
+      if(pseudo == '') pseudo = "Guest";
+      var user = {
+        name: pseudo,
+      }; 
+        socket.emit('pseudo', (user));
+      
+
+        window.location.href =
+          "room.html?room=" + idKey + pseudo + "&pseudo=" + pseudo;
+        socket.emit("roomId", { id: idKey, name: pseudo });
+      }
+    </script>
+    <header>
+      <nav>
+        <ul class="ulangue">
+          <li class="Langue">
+            <select>
+              <option value="">Langue</option>
+              <option value="English">English</option>
+              <option value="Français">Français</option>
+            </select>
+          </li>
+          <li class="Update">🔔 New Update 🔔</li>
+          <div class="popup">
+            <div class="popup-container">
+              <h1>Version 1.0</h1>
+              <h3><u>Quoi de neuf : </u></h3>
+              <ul class="brip">
+                <li>J'ai à finir le css</li>
+                <li>Gestion des liens de soundcloud</li>
+                <li>Gestion des liens de spotify</li>
+              </ul>
+            </div>
+
+            <span class="closepup">Okay</span>
           </div>
-
-          <span class="closepup">Okay</span>
+        </ul>
+      </nav>
+    </header>
+    <div class="main-content">
+      <p class="title-content">MyQueue</p>
+      <img src="images/test.jpg" id="avatar" class="avatar" />
+      <div class="pseudo">
+        <div class="pseudo-content">
+          <form style="height: 40px" action="javascript:send()">
+            <input
+              id="pseudo"
+              class="pseudo-input"
+              type="text"
+              placeholder="Surnom"
+              maxlength="20"
+            />
+          </form>
+          <span class="letter-counter">
+            <span class="count">20</span> letters</span
+          >
         </div>
-      </ul>
-    </nav>
-  </header>
-  <div class="main-content">
-    <p class="title-content">MyQueue</p>
-    <img src="images/test.jpg" id="avatar" class="avatar" />
-    <div class="pseudo">
-      <div class="pseudo-content">
-        <form style="height: 40px" action="javascript:send()">
-          <input id="pseudo" class="pseudo-input" type="text" placeholder="Surnom" maxlength="20" />
-        </form>
-        <span class="letter-counter">
-          <span class="count">20</span> letters</span>
-      </div>
 
-      <div class="room-btn">
-        <!--<span id="create-room" class="create-room" onclick="">CRÉER UNE ROOM</span>-->
-        <span class="join-room" onclick="send()">REJOINDRE UN ROOM</span>
+        <div class="room-btn">
+          <!--<span id="create-room" class="create-room" onclick="send()"
+            >CRÉER UNE ROOM</span
+          >-->
+          <span class="join-room" onclick="send()">REJOINDRE UN ROOM</span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer">
-    <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
-  </div>
+    <div class="footer">
+      <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
+    </div>
 
-  <script src="js/main.js"></script>
-</body>
-
+    <script src="js/main.js"></script>
+  </body>
 </html>

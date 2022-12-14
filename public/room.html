@@ -13,7 +13,21 @@
     integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/script.js"></script>
+  <script >
+      const socket = io("localhost:3000");
+      console.log("connecté room");
+
+ 
+      socket.on('test', (data) => {
+        console.log(data);
+      });
+
+      socket.on('connect-room',function(data){
+         document.body.innerHTML = '';
+         document.write(data);
+      });
+
+  </script>
 
   </script>
   <header>

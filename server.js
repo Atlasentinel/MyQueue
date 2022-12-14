@@ -1,35 +1,47 @@
 const path = require("path");
 const express = require("express");
 
-
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var app = require("express")();
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
 
 const port = 3000;
-
 
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/");
+  res.sendFile(__dirname + "/public/");
+  
 });
 
 app.get("/room", (req, res) => {
-    res.sendFile(__dirname + "/public/room.html");
+  res.sendFile(__dirname + "/public/room.html");
 });
+
+
+let pseudo;
 
 // server-side
 io.on("connection", (socket) => {
-    console.log("connect");
+  console.log("connect");
+  socket.on("pseudo", ({data}) => {
+    console.log("pseudo recus : " + data.name);
+    pseudo = data.name;
+   
+    console.log("pseudo renvoyer");
+  });
 
-    socket.on("ping", (count) => {
-      console.log(count);
+  socket.emit('test', pseudo);
+  console.log(pseudo);
+  socket.join("Guest");
+  io.to("Guest").emit('test',`${pseudo} rejoins la room`);
+
+    socket.on('disconnect', () => {
+      console.log("déconnecter");
     });
   });
 
 
 http.listen(port, function () {
-    console.log(`Server lancer sur le port ${port}`);
-})
-
+  console.log(`Server lancer sur le port ${port}`);
+});
