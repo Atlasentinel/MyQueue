@@ -23,6 +23,7 @@ app.get("/room", (req, res) => {
 
 
 
+let users = [];
 let pseudo;
 // server-side
 io.on("connection", (socket) => {
@@ -31,14 +32,13 @@ io.on("connection", (socket) => {
   socket.on('pseudo', (data) => {
     console.log("pseudo recus : " + data);
     pseudo = data;
-    
+    users.push(pseudo);
+    console.log(users);
   });
 
-  socket.emit('test', pseudo);
+  socket.broadcast.emit('test', pseudo);
   socket.leaveAll();
   socket.join("Guest");
-  io.to("Guest").emit("join", pseudo)
-
 
 
     socket.on('disconnect', () => {

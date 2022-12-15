@@ -2,5 +2,25 @@
   "dependencies": {
     "express": "^4.18.2",
     "socket.io": "^4.5.4"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "myqueue",
+  "description": "Un lecteur de musique partagé",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atlasentinel/MyQueue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atlasentinel/MyQueue/issues"
+  },
+  "homepage": "https://github.com/Atlasentinel/MyQueue#readme"
 }

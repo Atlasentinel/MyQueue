@@ -26,10 +26,8 @@
       function send() {
       let pseudo = document.getElementById('pseudo').value;
       if(pseudo == '') pseudo = "Guest";
-      var user = {
-        name: pseudo,
-      }; 
-      socket.emit('pseudo', (user));
+  
+      socket.emit('pseudo', (pseudo));
       
 
         window.location.href =

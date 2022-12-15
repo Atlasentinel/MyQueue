@@ -13,19 +13,19 @@
     integrity="sha512-/l6vieC+YxaZywUhmqs++8uF9DeMvJE61ua5g+UK0TuHZ4TkTgB1Gm1n0NiA86uEOM9JJ6JUwyR0hboKO0fCng=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script >
       const socket = io("localhost:3000");
  
-
-
       console.log("connecté room");
 
- 
       socket.on('test', (data) => {
         console.log("utilisateur: ", data);
+        truc = $("#ulParticipant").append($("<li><br>").text(data))
+       
       });
 
-      
+      socket.to("Guest").broadcast.emit('test', truc);
  
 
   </script>
@@ -60,17 +60,9 @@
   </header>
   <div class="room-container">
     <div class="user-room">
-      <span class="user-text">Participants</span>
-      <ul class="ulParticipant">
-        <li>
-          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
-        </li>
-        <li>
-          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
-        </li>
-        <li>
-          <img src="images/test.jpg" style="width: 50%; border-radius: 50%" />
-        </li>
+      <span class="user-text">Participants de Guest</span><br>
+      <ul id="ulParticipant" class="ulParticipant">
+
       </ul>
     </div>
 
