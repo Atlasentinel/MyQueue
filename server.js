@@ -19,22 +19,26 @@ app.get("/room", (req, res) => {
 });
 
 
-let pseudo;
 
+
+
+
+let pseudo;
 // server-side
 io.on("connection", (socket) => {
   console.log("connect");
-  socket.on("pseudo", ({data}) => {
-    console.log("pseudo recus : " + data.name);
-    pseudo = data.name;
-   
-    console.log("pseudo renvoyer");
+
+  socket.on('pseudo', (data) => {
+    console.log("pseudo recus : " + data);
+  
+    pseudo = data;
   });
 
+
   socket.emit('test', pseudo);
-  console.log(pseudo);
+  console.log("pseudo renvoyer", pseudo);
   socket.join("Guest");
-  io.to("Guest").emit('test',`${pseudo} rejoins la room`);
+  io.to("Guest").emit('test',`${pseudo} à rejoins la room`);
 
     socket.on('disconnect', () => {
       console.log("déconnecter");
