@@ -15,17 +15,18 @@
   <script src="/socket.io/socket.io.js"></script>
   <script >
       const socket = io("localhost:3000");
+ 
+
+
       console.log("connecté room");
 
  
       socket.on('test', (data) => {
-        console.log(data);
+        console.log("utilisateur: ", data);
       });
 
-      socket.on('connect-room',function(data){
-         document.body.innerHTML = '';
-         document.write(data);
-      });
+      
+ 
 
   </script>
 
@@ -110,6 +111,7 @@
               </div>
             </div>
           </li>
+       
         </ul>
       </div>
 
@@ -122,8 +124,8 @@
         </a>-->
 
       <div class="music-queue-input">
-        <form>
-          <input type="text" placeholder="Mettre un url..." />
+        <form id="test">
+          <input id="send-music" type="text" placeholder="Mettre un url..." />
         </form>
       </div>
     </div>

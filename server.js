@@ -12,14 +12,14 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/");
   
+  res.sendFile(__dirname + "/script.js");
+  
 });
+
 
 app.get("/room", (req, res) => {
   res.sendFile(__dirname + "/public/room.html");
 });
-
-
-
 
 
 
@@ -30,15 +30,16 @@ io.on("connection", (socket) => {
 
   socket.on('pseudo', (data) => {
     console.log("pseudo recus : " + data);
-  
     pseudo = data;
+    
   });
 
-
   socket.emit('test', pseudo);
-  console.log("pseudo renvoyer", pseudo);
+  socket.leaveAll();
   socket.join("Guest");
-  io.to("Guest").emit('test',`${pseudo} à rejoins la room`);
+  io.to("Guest").emit("join", pseudo)
+
+
 
     socket.on('disconnect', () => {
       console.log("déconnecter");
