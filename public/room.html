@@ -15,21 +15,19 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script >
-
       const socket = io("localhost:3000");
-      
-    
-        console.log("connecté room");
+ 
+      console.log("connecté room");
 
-      socket.on('users', (data) => {
+      socket.on('test', (data) => {
         console.log("utilisateur: ", data);
+        truc = $("#ulParticipant").append($("<li><br>").text(data))
+       
       });
-   
-          socket.on("users", (data) =>{
-             truc = $("#ulParticipant").append($("<li>").text(data));
-        });
 
-        
+      socket.to("Guest").broadcast.emit('test', truc);
+ 
+
   </script>
 
   </script>
@@ -85,58 +83,31 @@
               </div>
             </div>
           </li>
-          
+          <li class="li-music">
+            <div class="music">
+              <div class="img"><img src="images/test2.jpg" /></div>
+              <div class="music-text">
+                <span>Damso - Mosaïque Solitaire [2:30]</span>
+              </div>
+              <div class="music-delete">
+                <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
+              </div>
+            </div>
+          </li>
+          <li class="li-music">
+            <div class="music">
+              <div class="img"><img src="images/test3.jpg" /></div>
+              <div class="music-text"><span>PNL - Oh lala [2:30]</span></div>
+              <div class="music-delete">
+                <span id="delete"><i class="bx bx-x bx-rotate-180"></i></span>
+              </div>
+            </div>
+          </li>
+       
         </ul>
-
-      
       </div>
 
-      <audio id="audio-player"></audio>
-
-
- 
-
-
-      <script>
-        socket.on('music-list', (data) => {
-        const musicList = data.musicList;
-        const list = document.createElement('ul');
-        musicList.forEach((music) => {
-          const item = document.createElement('li');
-          item.textContent = `${music.urlMusic}`;
-          list.appendChild(item);
-        });
-        document.body.appendChild(list);
-      });
-      </script>
-
-      <div class="music-queue-input">
-        <form id="test" method="POST" action="javascript:send()">
-          <input id="send-music" autocomplete="off" type="text" placeholder="Mettre un url..." />
-        </form>
-      </div>
-
-            
-      <script>
-        const form = document.querySelector('#test');
-        const urlMusic = document.querySelector('#send-music');
-
-        function send(){
-
-          const music = urlMusic.value;
-          if(music != "https://www.youtube.com/watch?v=LfqVVOsQ9Wg"){
-            console.log("Lien incorrect");
-            return;
-          }
-          socket.emit('add-music', { music });
-          window.location.href =
-          "room";
-        }
-              </script>
-
-    </div>
-  </div>
-<!--<a href="./" title="Exit">
+      <!--<a href="./" title="Exit">
           <span class="exit">
             <i class="bx bx-exit"></i>
 
@@ -144,37 +115,16 @@
           </span>
         </a>-->
 
-        <button onclick="playYouTubeVideo('https://www.youtube.com/watch?v=dQw4w9WgXcQ')">
-          Lire la vidéo
-        </button>
-        <script>
+      <div class="music-queue-input">
+        <form id="test">
+          <input id="send-music" type="text" placeholder="Mettre un url..." />
+        </form>
+      </div>
+    </div>
+  </div>  
 
-          const AUDIO_PLAYER_ID = 'audio-player';
-          // Fonction qui charge et joue la vidéo YouTube
-          function playYouTubeVideo(videoUrl) {
-            // Récupère l'ID de la vidéo à partir de l'URL
-            const videoId = getYouTubeVideoId(videoUrl);
-            // Crée l'URL de la source de l'audio à partir de l'ID de la vidéo
-            const audioUrl = `https://www.youtube.com/watch?v=${videoId}`;
-            // Récupère l'élément audio
-            const audioPlayer = document.getElementById(AUDIO_PLAYER_ID);
-            // Modifie la source de l'audio
-            audioPlayer.src = audioUrl;
-            // Charge et joue l'audio
-            audioPlayer.load();
-            audioPlayer.play();
-          }
-          
-          // Fonction qui récupère l'ID de la vidéo YouTube à partir de l'URL
-          function getYouTubeVideoId(videoUrl) {
-            const regex = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-            const match = videoUrl.match(regex);
-            return (match && match[2].length === 11) ? match[2] : null;
-          }
-  
-        </script>
   <div class="footer">
-    <p>MyQueue &copy; - 2022 Tous Droits Réservés</p>
+    <p>MyQueue &copy; - 2022 Tous Droits Réserves</p>
   </div>
 
   <script src="js/main.js"></script>
