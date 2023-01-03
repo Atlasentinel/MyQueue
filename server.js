@@ -28,7 +28,7 @@ let pseudo;
 // server-side
 io.on("connection", (socket) => {
   console.log("connect");
-
+azeaz
   socket.on('pseudo', (data) => {
     console.log("pseudo recus : " + data);
     pseudo = data;
